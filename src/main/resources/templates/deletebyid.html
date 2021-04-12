@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<form action="#" th:action="@{/deletebyid/{id}(id=${emp.id})}" th:object="${employee}" method="post">
+
+		<div align="center">
+			<table>
+				<tr>
+					<td>Enter Employee-Id :-</td>
+					<td><input type="text" th:field="*{emp_id}"></td>
+				</tr>			
+				
+				<tr>					
+					<td><button type="submit">Submit</button></td>
+				</tr>
+				
+				</table>
+		</div>
+	</form>
+</body>
+</html>

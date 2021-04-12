@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Employee Management System</title>
+
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+</head>
+<body>
+	<div class="container"><br><br>
+		<h1>Employee Management System</h1>
+		<hr style="border :1px solid black;">
+		<h2>Update Employee</h2>
+
+		<form action="#" th:action="@{/save}" th:object="${employ}"
+			method="POST">
+			
+			<!-- Add hidden form field to handle update -->
+			<input type="hidden" th:field="*{emp_id}" />
+			
+			
+			<input type="text" th:field="*{emp_name}" required class="form-control mb-4 col-4">
+				
+				<input type="text" th:field="*{address}" required class="form-control mb-4 col-4">
+				
+				<input type="text" th:field="*{desiganation}" required class="form-control mb-4 col-4">
+				
+				<input type="text" th:field="*{salary}" required class="form-control mb-4 col-4">
+				
+				<button type="submit" class="btn btn-success"> Update Employee</button>
+		</form>
+		
+		<hr style=" border:1px solid black;">
+		
+		<a th:href = "@{/index}"> Back to Employee-portal</a>
+	</div>
+</body>
+<br><br><br>
+	<footer>
+  Copyright 2021 by @Vaibhav
+</footer>
+</html>

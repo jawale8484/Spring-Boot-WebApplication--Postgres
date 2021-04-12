@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Employee Portal</title>
+
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+	<form action="#" th:action="@{/save}" th:object="${employee}" method="post">
+		<div align="center"><br>
+			<h1>Employee Details</h1>
+			<hr style="border :1px solid black;">
+		
+			<table border="1" cellpadding="10px">
+
+				<thead>
+					<tr>
+						<th>Name</th>
+						<th>Address</th>
+						<th>Desiganation</th>
+						<th>Salary</th>
+						<th align="center">Action</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="emp : ${employeelist}">
+					<!-- <td th:text="${emp.emp_id}">Id</td> -->
+					<td th:text="${emp.emp_name}">Name</td>
+					<td th:text="${emp.address}">Address</td>
+					<td th:text="${emp.desiganation}">Desiganation</td>
+					<td th:text="${emp.salary}">Salary</td>
+					
+					
+                    <td><a th:href="@{/deletebyid/{id}(id=${emp.emp_id})}"
+                     class="btn btn-danger">
+                     </i> Delete</a>
+                     
+                     
+                    <a th:href="@{/updatebyid/{id}(id=${emp.emp_id})}"
+                     class="btn btn-success">
+                     </i> Update</a></td>
+				</tbody>
+
+			</table>
+			
+				
+		<!-- pagination part -->
+				<nav aria-label="Page navigation example">
+		  <ul class="pagination">
+		  
+		    <li th:if="${currentpage != 1}" class="page-item">
+		    <a th:href="@{'/show/'+${currentpage-1}}" class="page-link" href="#">Previous</a></li>
+		    
+		     <li th:classappend="${currentpage==i?'active':''}"  th:each="i: ${#numbers.sequence(1,totalpage)}"  class="page-item">
+					<a th:href="@{'/show/'+${i}}" class="page-link" href="#"><span th:text=${i}> 
+					</span></a></li>
+		   
+		 <!-- 
+		 <span th:each="i : ${#numbers.sequence(1,totalpage)}">
+		 <a th:href="@{'/show/'+${i}}">[[${i}]]</a>
+		 </span> -->
+		 
+		 
+		    <li th:if="${currentpage != totalpage}"  class="page-item">
+		    <a th:href="@{'/show/'+${currentpage+1}}" class="page-link" href="#">Next</a></li>
+		  </ul>
+		</nav>
+				
+		
+		
+		<hr style="border :1px solid black;">
+		
+		</div>
+		<a th:href = "@{/index}"> Back to Employee-portal</a>
+		
+		
+	
+		
+	</form></div>
+</body>
+<br>
+
+	<footer>
+  Copyright 2021 by @Vaibhav
+</footer>
+</html>
